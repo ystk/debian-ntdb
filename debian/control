@@ -1,0 +1,119 @@
+Source: ntdb
+Section: devel
+Priority: optional
+Maintainer: Debian Samba Maintainers <pkg-samba-maint@lists.alioth.debian.org>
+Uploaders: Jelmer Vernooij <jelmer@debian.org>
+Build-Depends: debhelper (>= 9),
+               docbook-xml,
+               docbook-xsl,
+               python-all-dbg (>= 2.6.6-3),
+               python-all-dev (>= 2.6.6-3),
+               xsltproc
+Homepage: http://tdb.samba.org/
+Standards-Version: 3.9.5
+Vcs-Git: git://anonscm.debian.org/pkg-samba/ntdb.git -b unstable
+
+Package: libntdb1
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Architecture: linux-any kfreebsd-any
+Section: libs
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: New Trivial Database - shared library
+ This is a simple database API. It is modelled after the structure
+ of GDBM. TDB features, unlike GDBM, multiple writers support with
+ appropriate locking and transactions.
+ .
+ ntdb uses a file format that is incompatible with tdb, but the API
+ is similar. It improves performance, adds support for databases
+ larger than 4 Gb, and improves integration with talloc.
+ .
+ This package contains the shared library file.
+
+Package: ntdb-tools
+Section: utils
+Architecture: linux-any kfreebsd-any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: New Trivial Database - bundled binaries
+ This is a simple database API. It is modelled after the structure
+ of GDBM. TDB features, unlike GDBM, multiple writers support with
+ appropriate locking and transactions.
+ .
+ ntdb uses a file format that is incompatible with tdb, but the API
+ is similar. It improves performance, adds support for databases
+ larger than 4 Gb, and improves integration with talloc.
+ .
+ This package contains bundled test and utility binaries.
+
+Package: libntdb-dev
+Section: libdevel
+Architecture: linux-any kfreebsd-any
+Depends: libc6-dev, libntdb1 (= ${binary:Version}), ${misc:Depends}
+Suggests: libtalloc-dev
+Description: New Trivial Database - development files
+ This is a simple database API. It is modelled after the structure
+ of GDBM. TDB features, unlike GDBM, multiple writers support with
+ appropriate locking and transactions.
+ .
+ ntdb uses a file format that is incompatible with tdb, but the API
+ is similar. It improves performance, adds support for databases
+ larger than 4 Gb, and improves integration with talloc.
+ .
+ This package contains the development files.
+
+Package: libntdb1-dbg
+Section: debug
+Architecture: linux-any kfreebsd-any
+Priority: extra
+Depends: libntdb1 (= ${binary:Version}), ${misc:Depends}
+Recommends: libc6-dbg
+Description: New Trivial Database - debug symbols
+ This is a simple database API. It is modelled after the structure
+ of GDBM. TDB features, unlike GDBM, multiple writers support with
+ appropriate locking and transactions.
+ .
+ ntdb uses a file format that is incompatible with tdb, but the API
+ is similar. It improves performance, adds support for databases
+ larger than 4 Gb, and improves integration with talloc.
+ .
+ This package contains the debug symbols.
+
+Package: python-ntdb
+Section: python
+Architecture: linux-any kfreebsd-any
+Depends: libntdb1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python:Depends},
+         ${shlibs:Depends}
+Provides: ${python:Provides}
+Description: Python bindings for NTDB
+ This is a simple database API. It is modelled after the structure
+ of GDBM. TDB features, unlike GDBM, multiple writers support with
+ appropriate locking and transactions.
+ .
+ ntdb uses a file format that is incompatible with tdb, but the API
+ is similar. It improves performance, adds support for databases
+ larger than 4 Gb, and improves integration with talloc.
+ .
+ This package contains the Python bindings.
+
+Package: python-ntdb-dbg
+Section: debug
+Architecture: linux-any kfreebsd-any
+Priority: extra
+Depends: python-ntdb (= ${binary:Version}),
+         ${misc:Depends},
+         ${python:Depends},
+         ${shlibs:Depends}
+Recommends: python-dbg, libntdb1-dbg
+Provides: ${python:Provides}
+Description: Python bindings for NTDB - debug extension
+ This is a simple database API. It is modelled after the structure
+ of GDBM. TDB features, unlike GDBM, multiple writers support with
+ appropriate locking and transactions.
+ .
+ ntdb uses a file format that is incompatible with tdb, but the API
+ is similar. It improves performance, adds support for databases
+ larger than 4 Gb, and improves integration with talloc.
+ .
+ This package contains the Python debug extension.
